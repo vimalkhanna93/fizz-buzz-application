@@ -1,0 +1,66 @@
+<html>
+<body>
+<h1> FizzBuzz Game window </h1>
+<form>
+<table style="width:50%">
+  <tr>
+    <td>Phone Number: </td>
+    <td><input type="text" id="phno_txtbox">&nbspValid number format "XXXXXXXXXX"</td> 
+  </tr>
+  <tr>
+    <td>Time to Delay(Seconds):</td>
+    <td><input type ="text" id="timer_txtbox"></td> 
+  </tr>
+    <tr></tr>  <tr></tr>
+    <tr></tr>
+  <tr>
+    <td><button id="submit_btnbox" onclick='delayTimer()'> Submit </button> </td> 
+  </tr>
+	<div style="visibility: hidden; color:#009933" id="success">
+		Watch for the phone call 
+	</div>
+</table>
+</form>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+
+function delayTimer(){
+	event.preventDefault();
+	var timeNumber = document.getElementById('timer_txtbox').value;
+	var validip=/^\+?(0|[1-9]\d*)$/;
+	var match = timeNumber.match(validip);
+	try {
+		if(  match.length > 0  )
+        	{
+				window.setTimeout(callTwilio, 1000*document.getElementById('timer_txtbox').value);
+			}
+		}
+	catch(err) {
+                alert("Not a valid Number");
+        		}
+}
+function callTwilio(){
+	var phNumber = document.getElementById('phno_txtbox').value;
+	console.log(phNumber);
+	var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+	var match = phNumber.match(phoneno);
+	console.log("match length : "+ match);
+	try {
+		if(  match.length > 0  )
+        	{
+                var urlToCall = "http://ec2-52-26-223-129.us-west-2.compute.amazonaws.com:3000/number?numberToCall="+phNumber;
+                $.get(urlToCall);
+                document.getElementById('success').style.visibility="visible";
+       		}
+	}
+	catch(err) {
+                alert("Not a valid number");
+        }
+
+}
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+{
+  "name": "FizzBuzzapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fizzbuzz.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "twilio": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimalkhanna93/FizzBuzzapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vimalkhanna93/FizzBuzzapp/issues"
+  },
+  "homepage": "https://github.com/vimalkhanna93/FizzBuzzapp#readme"
+}
